@@ -1,0 +1,107 @@
+{
+  "logo": "https://cdn.killobyte.es/files/theme/v3/img/marca-clara.svg",
+  "pages": [
+    {
+      "title": "Portafolio",
+      "link": "https://jose.killobyte.es",
+      "icon": "id-badge",
+      "requiresAuth": false
+    },
+    {
+      "title": "KID",
+      "link": "https://id.killobyte.es",
+      "icon": "shield-halved",
+      "requiresAuth": false
+    },
+    {
+      "title": "Caduco",
+      "link": "https://caduco.killobyte.es",
+      "icon": "paste",
+      "requiresAuth": false
+    },
+    {
+      "title": "CDN",
+      "link": "https://cdn.killobyte.es",
+      "icon": "network-wired",
+      "requiresAuth": false
+    },
+    {
+      "title": "Fragua",
+      "link": "https://git.killobyte.es",
+      "icon": "code-branch",
+      "requiresAuth": false
+    },
+    {
+      "title": "Apuntes",
+      "link": "https://docs.killobyte.es",
+      "icon": "book",
+      "requiresAuth": false
+    },
+    {
+      "title": "Biblioteca",
+      "link": "https://books.killobyte.es",
+      "icon": "book-open-reader",
+      "requiresAuth": true
+    },
+    {
+      "title": "Catálogo",
+      "link": "https://catalogo.killobyte.es",
+      "icon": "boxes-stacked",
+      "requiresAuth": true
+    },
+    {
+      "title": "Notflix",
+      "link": "https://cine.killobyte.es",
+      "icon": "film",
+      "requiresAuth": true
+    },
+    {
+      "title": "Galería",
+      "link": "https://photos.killobyte.es",
+      "icon": "images",
+      "requiresAuth": true
+    },
+    {
+      "title": "Nube",
+      "link": "https://drive.killobyte.es",
+      "icon": "hard-drive",
+      "requiresAuth": true
+    },
+    {
+      "title": "Dineros",
+      "link": "https://dineros.killobyte.es",
+      "icon": "wallet",
+      "requiresAuth": true
+    },
+    {
+      "title": "Status",
+      "link": "https://status.killobyte.es/status/public",
+      "icon": "heart-pulse",
+      "requiresAuth": false
+    },
+    {
+      "title": "Chivato",
+      "link": "https://chivato.killobyte.es",
+      "icon": "bullhorn",
+      "requiresAuth": false
+    },
+    {
+      "title": "Muelle",
+      "link": "https://muelle.killobyte.es",
+      "icon": "docker",
+      "requiresAuth": true
+    },
+    {
+      "title": "Panel",
+      "link": "https://panel.killobyte.es",
+      "icon": "panel",
+      "requiresAuth": true
+    },
+    {
+      "title": "Terminal ciudadana",
+      "link": "https://ses.killobyte.es",
+      "icon": "earth-europe",
+      "requiresAuth": false
+    }
+  ]
+}

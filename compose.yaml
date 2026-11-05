@@ -8,7 +8,7 @@ services:
     container_name: cdn-web
     restart: unless-stopped
     networks:
-      - proxy_net
+      - cdn_net
     volumes:
       - ${CDN_FILES_DIR:-/var/www/files}:/srv/files:ro
     logging:
@@ -16,6 +16,22 @@ services:
         max-size: 10m
         max-file: "3"
 
+  api:
+    build:
+      context: ./api
+    image: git.killobyte.es/gallardo7761/cdn-api:${WEB_VERSION:-latest}
+    container_name: cdn-api
+    restart: unless-stopped
+    user: "${CDN_UID:-1000}:${CDN_GID:-1000}"
+    networks:
+      - cdn_net
+    volumes:
+      - ${CDN_FILES_DIR:-/var/www/files}:/srv/files
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+
 networks:
-  proxy_net:
+  cdn_net:
     external: true

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="https://cdn.killobyte.es/files/theme/v3/img/icono.svg" />
+    <title>cdn admin</title>
+    <link rel="stylesheet" href="https://cdn.killobyte.es/files/theme/v3/kb.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script type="module" src="https://cdn.killobyte.es/files/theme/v3/kb.js"></script>
+    <script type="module" src="admin.js"></script>
+  </head>
+  <body>
+    <div class="kb-shell">
+      <kb-header site="cdn" tag="administración" href="#/">
+        <nav class="tabs">
+          <a href="#/">archivos</a>
+          <a href="#edit=config/hub.json">hub</a>
+          <a href="#edit=config/dotme.json">dotme</a>
+          <a href="https://id.killobyte.es/logout">salir</a>
+        </nav>
+      </kb-header>
+      <main class="kb-container">
+        <p id="status" role="status"></p>
+        <div id="view"></div>
+      </main>
+      <kb-footer></kb-footer>
+    </div>
+  </body>
+</html>

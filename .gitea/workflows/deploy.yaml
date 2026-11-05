@@ -10,6 +10,7 @@ concurrency:
 
 env:
   IMAGE: git.killobyte.es/gallardo7761/cdn-web
+  API_IMAGE: git.killobyte.es/gallardo7761/cdn-api
 
 jobs:
   deploy:
@@ -46,14 +47,21 @@ jobs:
           WEB_VERSION: ${{ steps.version.outputs.version }}
         run: |
           docker compose build
-          docker tag "$IMAGE:$WEB_VERSION" "$IMAGE:latest"
-          docker push "$IMAGE:$WEB_VERSION"
-          docker push "$IMAGE:latest"
+          for image in "$IMAGE" "$API_IMAGE"; do
+            docker tag "$image:$WEB_VERSION" "$image:latest"
+            docker push "$image:$WEB_VERSION"
+            docker push "$image:latest"
+          done
 
       - name: Container
         env:
           WEB_VERSION: ${{ steps.version.outputs.version }}
-        run: docker compose up -d --no-build --remove-orphans
+        run: |
+          if ! docker network inspect cdn_net > /dev/null 2>&1; then
+            echo "::error::Falta la red cdn_net. Créala con 'docker network create --internal cdn_net' y conecta el proxy a ella."
+            exit 1
+          fi
+          docker compose up -d --no-build --remove-orphans
 
       - name: Git tag
         env:

@@ -5,3 +5,4 @@ dist
 .gitea
 .claude
 .env
+api

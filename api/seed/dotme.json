@@ -1,0 +1,26 @@
+{
+  "interests": ["IoT", "Electrónica", "Sistemas Empotrados", "Ciberseguridad", "Videojuegos", "Música", "Animanga"],
+  "featured": [
+    { "title": "ses-terminal", "desc": "Terminal ciudadana del SES Alas de la Libertad", "tech": "React" },
+    { "title": "nucleo", "desc": "Paper plugin for my friends Minecraft server", "tech": "Kotlin" },
+    { "title": "contaminus", "desc": "Proyecto Hack4Change 24/25. Fullstack + IoT.", "tech": "React/Java/Python/IoT" }
+  ],
+  "services": [
+    { "title": "Fragua", "host": "git.killobyte.es", "icon": "code-branch" },
+    { "title": "CDN", "host": "cdn.killobyte.es", "icon": "network-wired" },
+    { "title": "KPaste", "host": "paste.killobyte.es", "icon": "paste" },
+    { "title": "Status", "host": "status.killobyte.es", "icon": "heart-pulse", "href": "https://status.killobyte.es/status/public" },
+    { "title": "Apuntes", "host": "docs.killobyte.es", "icon": "book" },
+    { "title": "KID", "host": "id.killobyte.es", "icon": "shield-halved" }
+  ],
+  "specs": {
+    "estudios": "Ing. de Computadores · US",
+    "curso": "{curso}º",
+    "os": "Arch Linux (btw)",
+    "de": "Hyprland",
+    "homelab": "Debian 13",
+    "stack": "embedded · backend · low-level",
+    "ops": "redes · seguridad · sysadmin",
+    "uptime": "demasiado"
+  }
+}
