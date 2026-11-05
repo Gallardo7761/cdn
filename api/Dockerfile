@@ -9,4 +9,4 @@ COPY package.json package-lock.json ./
 RUN --mount=type=cache,target=/root/.npm npm ci --omit=dev
 COPY . .
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["sh", "-c", "umask 002 && exec node server.js"]

@@ -22,7 +22,7 @@ services:
     image: git.killobyte.es/gallardo7761/cdn-api:${WEB_VERSION:-latest}
     container_name: cdn-api
     restart: unless-stopped
-    user: "${CDN_UID:-1000}:${CDN_GID:-1000}"
+    user: "${CDN_UID:-1000}:${CDN_GID:-33}"
     networks:
       - cdn_net
     volumes:
