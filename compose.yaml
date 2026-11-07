@@ -1,7 +1,24 @@
+x-hardening: &hardening
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  read_only: true
+  tmpfs:
+    - /tmp
+  restart: unless-stopped
+
 name: cdn
 
 services:
   web:
+    <<: *hardening
+    mem_limit: 64m
+    pids_limit: 64
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
     build:
       context: .
     image: git.killobyte.es/gallardo7761/cdn-web:${WEB_VERSION:-latest}
@@ -17,6 +34,9 @@ services:
         max-file: "3"
 
   api:
+    <<: *hardening
+    mem_limit: 256m
+    pids_limit: 128
     build:
       context: ./api
     image: git.killobyte.es/gallardo7761/cdn-api:${WEB_VERSION:-latest}
