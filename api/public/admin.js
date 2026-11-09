@@ -158,7 +158,7 @@ function loadMonaco() {
           base: matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'vs',
           inherit: true,
           rules: [],
-          colors: {
+          colors: Object.fromEntries(Object.entries({
             'editor.background': color('paper'),
             'editor.foreground': color('ink'),
             'editorLineNumber.foreground': color('rule-soft'),
@@ -166,7 +166,7 @@ function loadMonaco() {
             'editorCursor.foreground': color('accent'),
             'editor.selectionBackground': color('shade'),
             'editor.lineHighlightBackground': color('tint'),
-          },
+          }).filter(([, value]) => value)),
         });
         resolve(window.monaco);
       }, reject);
