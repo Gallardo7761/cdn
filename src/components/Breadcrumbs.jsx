@@ -1,36 +1,19 @@
-export default function Breadcrumbs({ currentPath, onNavigate }) {
-  const parts = currentPath.split('/').filter(Boolean);
+export default function Breadcrumbs({ currentPath, search, onNavigate }) {
+  if (search.trim()) return <h1>Resultados para «{search}»</h1>;
 
-  const handleClick = (index) => {
-    if (index === -1) {
-      onNavigate('');
-    } else {
-      const target = parts.slice(0, index + 1).join('/') + '/';
-      onNavigate(target);
-    }
-  };
+  const parts = currentPath.split('/').filter(Boolean);
+  const link = (label, target) => (
+    <a href={`/${target}`} onClick={(e) => { e.preventDefault(); onNavigate(target); }}>{label}</a>
+  );
 
   return (
-    <nav className="flex items-center gap-2 text-xs sm:text-sm text-kb-text-muted overflow-x-auto">
-      <button
-        onClick={() => handleClick(-1)}
-        className="hover:text-kb-orange-light transition-colors flex items-center gap-1 cursor-pointer"
-      >
-        ~ storage
-      </button>
+    <h1>
+      Índice de {link('/', '')}
       {parts.map((folder, index) => (
-        <div key={folder} className="flex items-center gap-2">
-          <span className="text-kb-green">/</span>
-          <button
-            onClick={() => handleClick(index)}
-            className={`transition-colors cursor-pointer ${
-              index === parts.length - 1 ? 'text-kb-orange-light' : 'hover:text-kb-orange-light'
-            }`}
-          >
-            {folder}
-          </button>
-        </div>
+        <span key={index}>
+          {index === parts.length - 1 ? folder : link(folder, parts.slice(0, index + 1).join('/') + '/')}/
+        </span>
       ))}
-    </nav>
+    </h1>
   );
 }

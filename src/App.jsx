@@ -95,8 +95,8 @@ export default function App() {
     <div className="kb-shell">
       <Header search={search} onSearchChange={handleSearchChange} count={items.length} />
 
-      <main className="kb-container flex flex-col gap-6 pb-10">
-        <Breadcrumbs currentPath={currentPath} onNavigate={handleNavigate} />
+      <main className="kb-container">
+        <Breadcrumbs currentPath={currentPath} search={search} onNavigate={handleNavigate} />
 
         <FileList
           items={items}
@@ -107,6 +107,8 @@ export default function App() {
           onNavigate={handleNavigate}
           onCopy={handleCopy}
         />
+
+        <address>nginx en cdn.killobyte.es · {items.length} elementos</address>
       </main>
 
       <kb-footer />

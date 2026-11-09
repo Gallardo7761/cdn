@@ -155,16 +155,17 @@ function loadMonaco() {
         const css = getComputedStyle(document.documentElement);
         const color = (name) => css.getPropertyValue(`--kb-${name}`).trim();
         window.monaco.editor.defineTheme('kb', {
-          base: 'vs-dark',
+          base: matchMedia('(prefers-color-scheme: dark)').matches ? 'vs-dark' : 'vs',
           inherit: true,
           rules: [],
           colors: {
-            'editor.background': color('green-night'),
-            'editor.foreground': color('text'),
-            'editorLineNumber.foreground': color('green-dark'),
-            'editorLineNumber.activeForeground': color('green'),
-            'editorCursor.foreground': color('orange'),
-            'editor.selectionBackground': color('green-dark'),
+            'editor.background': color('paper'),
+            'editor.foreground': color('ink'),
+            'editorLineNumber.foreground': color('rule-soft'),
+            'editorLineNumber.activeForeground': color('ink'),
+            'editorCursor.foreground': color('accent'),
+            'editor.selectionBackground': color('shade'),
+            'editor.lineHighlightBackground': color('tint'),
           },
         });
         resolve(window.monaco);

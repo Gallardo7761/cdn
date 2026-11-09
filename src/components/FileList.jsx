@@ -1,43 +1,44 @@
 import FileItem from './FileItem';
 
 export default function FileList({ items, loading, error, currentPath, copiedName, onNavigate, onCopy }) {
-  if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center py-20 text-kb-text-muted text-sm gap-2">
-        <div className="w-6 h-6 border-2 border-kb-green border-t-kb-orange rounded-full animate-spin" />
-        <span>Consultando CDN...</span>
-      </div>
-    );
-  }
+  if (loading) return <p className="kb-muted">Consultando CDN…</p>;
+  if (error) return <p>Error al cargar archivos: {error}</p>;
 
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 text-kb-orange text-sm">
-        <span>Error al cargar archivos: {error}</span>
-      </div>
-    );
-  }
-
-  if (items.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 text-kb-text-muted text-sm">
-        <span>Directorio vacío o sin coincidencias</span>
-      </div>
-    );
-  }
+  const parent = currentPath.split('/').filter(Boolean).slice(0, -1).join('/');
+  const showParent = currentPath && !items[0]?.isGlobal;
 
   return (
-    <div className="flex flex-col border-[1.5px] border-kb-green rounded-[10px] overflow-hidden divide-y divide-kb-green-dark">
-      {items.map((item) => (
-        <FileItem
-          key={item.name}
-          item={item}
-          currentPath={currentPath}
-          copiedName={copiedName}
-          onNavigate={onNavigate}
-          onCopy={onCopy}
-        />
-      ))}
+    <div className="kb-scroll">
+      <table className="index">
+        <thead>
+          <tr><th>Nombre</th><th>Última modificación</th><th>Tamaño</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+          {showParent && (
+            <tr>
+              <td colSpan={4}>
+                <a href={`/${parent && `${parent}/`}`} onClick={(e) => { e.preventDefault(); onNavigate(parent && `${parent}/`); }}>
+                  ../
+                </a>{' '}
+                <span className="kb-muted">Directorio superior</span>
+              </td>
+            </tr>
+          )}
+          {items.map((item) => (
+            <FileItem
+              key={item.name}
+              item={item}
+              currentPath={currentPath}
+              copiedName={copiedName}
+              onNavigate={onNavigate}
+              onCopy={onCopy}
+            />
+          ))}
+          {items.length === 0 && (
+            <tr><td colSpan={4} className="kb-muted">Directorio vacío o sin coincidencias</td></tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }

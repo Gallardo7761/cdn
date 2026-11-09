@@ -1,23 +1,15 @@
-@import "tailwindcss";
+.search { width: 24ch; max-width: 100%; }
 
-@theme inline {
-  --color-kb-bg: var(--kb-bg);
-  --color-kb-green: var(--kb-green);
-  --color-kb-green-dark: var(--kb-green-dark);
-  --color-kb-green-deep: var(--kb-green-deep);
-  --color-kb-green-night: var(--kb-green-night);
-  --color-kb-orange: var(--kb-orange);
-  --color-kb-orange-deep: var(--kb-orange-deep);
-  --color-kb-orange-light: var(--kb-orange-light);
-  --color-kb-gold: var(--kb-gold);
-  --color-kb-text: var(--kb-text);
-  --color-kb-text-muted: var(--kb-text-muted);
+.index { min-width: 620px; }
+.index th { white-space: nowrap; }
+.index td:first-child { overflow-wrap: anywhere; }
+.index td:nth-child(2), .index td:nth-child(3) { white-space: nowrap; color: var(--kb-muted); }
+.index :is(td, th):nth-child(3) { text-align: right; }
+.index td:nth-child(4) { width: 1%; white-space: nowrap; }
+.index td:nth-child(4) button + button { margin-left: 1ch; }
 
-  --font-sans: var(--kb-font-body);
-  --font-mono: var(--kb-font-body);
-  --font-display: var(--kb-font-display);
-}
+.hash td { padding-block: 0.4rem; }
+.hash code { color: var(--kb-accent); overflow-wrap: anywhere; user-select: all; }
+.hash button { margin-left: 1ch; }
 
-@theme {
-  --text-xxs: 11px;
-}
+address { margin-top: 1.5rem; font-size: 0.8rem; color: var(--kb-muted); }
